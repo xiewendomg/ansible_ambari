@@ -1,0 +1,2 @@
+# ansible_ambari
+使用ansible搭建ambari基础平台
