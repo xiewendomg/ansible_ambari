@@ -1,0 +1,6 @@
+- name: yum ntp
+  yum: name=ntp state=latest 
+- name: vi /etc/ntp.conf
+  template: src=ntp.j2 dest=/etc/ntp.conf
+- name: systemctl ntp
+  shell: systemctl start ntpd && systemctl enable ntpd && systemctl disable chronyd

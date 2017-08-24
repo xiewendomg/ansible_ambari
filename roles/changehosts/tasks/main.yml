@@ -1,0 +1,2 @@
+- name: changehosts
+  copy: src=/etc/hosts dest=/etc/hosts owner=root group=root mode=644 backup=no

@@ -1,0 +1,3 @@
+- name: seliunx
+  shell:  sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/sysconfig/selinux && systemctl stop firewalld && systemctl disable firewalld
+  ignore_errors: yes

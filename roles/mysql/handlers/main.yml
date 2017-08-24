@@ -1,0 +1,2 @@
+- name: enable mysql
+  shell: systemctl enable mysqld

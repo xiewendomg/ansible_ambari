@@ -1,0 +1,6 @@
+- name: httpd
+  shell: yum install httpd -y && systemctl start httpd && systemctl  enable httpd.service
+- name: createrepo
+  shell: mkdir /var/www/html/centos -p && yum install createrepo -y 
+- name: mount
+  shell: mount -t auto /dev/cdrom /var/www/html/centos

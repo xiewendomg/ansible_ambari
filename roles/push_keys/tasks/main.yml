@@ -1,0 +1,6 @@
+- name: push_keys
+  copy: src=/{{path}}/{{fileName}} dest={{ambari_sshkeys_location}}/ owner=root group=root mode=644 backup=no
+- name: cat 
+  shell: cat {{ambari_sshkeys_location}}/{{fileName}} >> {{ambari_sshkeys_location}}/authorized_keys
+- name: rm ssh_keys
+  shell: rm -rf {{ambari_sshkeys_location}}/{{fileName}}

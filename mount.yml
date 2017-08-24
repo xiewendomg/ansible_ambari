@@ -1,0 +1,6 @@
+---
+#挂载磁盘
+- hosts: nodes
+  gather_facts: false
+  roles:
+     - mountDataNode

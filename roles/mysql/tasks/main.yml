@@ -1,0 +1,32 @@
+- name: stop mysqld
+  shell: systemctl stop mysqld
+  ignore_errors: yes
+- name: check mysql is installed..
+  shell: rpm -qa |grep -i mysql
+  register: mysql
+  ignore_errors: yes
+- name: remove mysql_rpm
+  shell: rpm -ev --nodeps {{item}}
+  with_items: mysql.stdout_lines
+  when: mysql.stdout.find('mysql') !=-1
+- name: rpm -ev mysql-libs*
+  shell: rpm -ev --nodeps mysql-libs*
+  ignore_errors: yes
+- name: rm mysql-oldPath
+  shell: rm -rf /usr/share/mysql /var/lib/mysql /etc/my.cmf /var/lib/mysql-files /usr/bin/mysql
+- name: remove_mariadb
+  shell: rpm -qa|grep -i mariadb
+  register: maridb
+  ignore_errors: yes
+- name: remove maridb
+  shell: rpm -ev --nodeps {{item}}
+  with_items: maridb.stdout_lines
+  when: maridb.stdout.find('maridb') !=-1
+- name: yum mysql
+  yum: name=mysql-server state=latest
+- name: my.cnf
+  template: src=my.j2 dest=/etc/my.cnf 
+- name: init_db
+  shell: mysql_install_db && systemctl start mysqld
+- name: mysqladmin -u root password '1'
+  shell: mysqladmin -u root password '1'

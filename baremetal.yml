@@ -1,0 +1,30 @@
+---
+#所用节点对ansible免密，修改/etc/hosts,永久关闭防火墙，安装jdk8
+- hosts: all
+  gather_facts: false
+  roles:
+     - common
+     - changehosts
+     - yumclient
+     - closeTHP
+#文件过大省略配置yum服务器过程     
+#配置ntp本地服务器
+- hosts: ambari
+  gather_facts: false
+  roles:
+     - ntpserver
+#配置ambariMaster对从节点免密
+#配置yum源node，ntpdate本地时间服务器（省略参数引入），搭建mysql
+- hosts: nodes
+  gather_facts: false
+  roles:
+     - ntpdate 
+- hosts: ambari
+  gather_facts: false
+  roles: 
+     - mysql
+#安装jdk8
+- hosts: all
+  gather_facts: false
+  roles:
+     - {role: "yumInstall",YIN: "java"}

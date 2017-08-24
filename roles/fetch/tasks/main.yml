@@ -1,0 +1,2 @@
+- name: fetch {{from}} to local {{to}}
+  fetch: src={{from}} dest={{to}} flat=yes

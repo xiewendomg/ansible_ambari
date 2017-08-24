@@ -1,0 +1,14 @@
+- name: rm /etc/yum.re
+  shell: rm -rf /etc/yum.repos.d && mkdir /etc/yum.repos.d
+- name: centos.repo
+  template: src=centos.j2  dest=/etc/yum.repos.d/centos.repo
+- name: ambari.repo
+  template: src=ambari.j2  dest=/etc/yum.repos.d/ambari.repo
+- name: hdp.repo
+  template: src=hdp.j2  dest=/etc/yum.repos.d/hdp.repo
+- name: hdp_utils.repo
+  template: src=hdp_utils.j2  dest=/etc/yum.repos.d/hdp_utils.repo
+- name: mysql.repo
+  template: src=mysql.j2  dest=/etc/yum.repos.d/mysql.repo  
+- name: yum clean all
+  command: yum clean all

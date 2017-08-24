@@ -1,0 +1,6 @@
+- name: yum ntp
+  yum: name=ntp state=latest    
+- name: vi /etc/ntp.conf
+  template: src=ntp.j2 dest=/etc/ntp.conf
+- name: cron ntpdate
+  cron: name="yum autoupdate"  minute="*/1" user="root" job="ntpdate {{ntp_server_ip}}"

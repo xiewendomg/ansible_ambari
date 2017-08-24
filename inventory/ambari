@@ -1,0 +1,10 @@
+#ambari
+[ambari]  
+ambari ansible_ssh_user=root ansible_ssh_pass=1
+#nodes
+[nodes]
+hdp-1 ansible_ssh_user=root ansible_ssh_pass=1
+hdp-5 ansible_ssh_user=root ansible_ssh_pass=1 
+hdp-4 ansible_ssh_user=root ansible_ssh_pass=1
+hdp-3 ansible_ssh_user=root ansible_ssh_pass=1
+hdp-2 ansible_ssh_user=root ansible_ssh_pass=1

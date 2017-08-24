@@ -1,0 +1,4 @@
+- name: gene ssh_key
+  shell: ssh-keygen -t {{type}} -P '' -f {{ambari_sshkeys_location}}/id_{{type}}
+- name: cat {{ambari_sshkeys_location}}/id_{{type}}.pub >> {{ambari_sshkeys_location}}/authorized_keys
+  shell: cat {{ambari_sshkeys_location}}/id_{{type}}.pub >> {{ambari_sshkeys_location}}/authorized_keys
