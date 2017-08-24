@@ -1,9 +1,0 @@
----
-#yum仓库ip
-yum_url: ambari
-ntp_server_ip: ambari
-ntp_server_gatawy: 172.30.1.0
-ambari_sshkeys_location: /root/.ssh
-fileSystemType: xfs
-diskDir: /dev/vdb 
-mountDir: /hadoop/hdfs/data
